@@ -11,5 +11,8 @@ exports.signup = (req, res) => {
         throw error;
     }
 
-    const {firstName, lastName, email, password} = req.body;
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const email = req.body.email;
+    const password = req.body.password;
 }
