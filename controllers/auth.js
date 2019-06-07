@@ -13,10 +13,7 @@ exports.signup = (req, res, next) => {
         throw error;
     }
 
-    const firstName = req.body.firstName;
-    const lastName = req.body.lastName;
-    const email = req.body.email;
-    const password = req.body.password;
+    const {firstName, lastName, email, password} = req.body;
 
     // Encrypt password
     bcrypt.hash(password, 12).then(hashedPassword => {
@@ -27,8 +24,9 @@ exports.signup = (req, res, next) => {
             password: hashedPassword,
         });
         return user.save();
-    }).then(res => {
-        res.status(201).json({message: 'User successfully created!', userId: res._id});
+    }).then(result => {
+        console.log(result);
+        res.status(201).json({message: 'User successfully created!', userId: result._id});
     }).catch(err => {
         if(!err.statusCode){
             err.statusCode = 500;

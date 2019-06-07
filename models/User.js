@@ -18,10 +18,6 @@ const userSchema = new Schema({
         password: {
             type: String,
             requred: true,
-        },
-        status: {
-            type: String,
-            required: true,
         }
     },
     { timestamps: true }
